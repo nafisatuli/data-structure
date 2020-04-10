@@ -1,22 +1,44 @@
-#include<stdio.h>
+#include <stdio.h>
+#include <string.h>
+void insert(char aa[],char bb[],int p)
+{
+    char cc[1000];
+	int j=0,i=0,t=0,n=0,x,g,s,m;
+    for(i=0;aa[i]!='\0';i++)
+        j++;
+	for(i=0;bb[i]!='\0';i++)
+        n++;
+	i=0;
+	while(i <= j)
+	{
+		cc[i]=aa[i];
+		i++;
+	}
+	s = n+j;
+	m = p+n;
+	for(i=p;i<s;i++)
+	{
+		x = cc[i];
+		if(t<n)
+		{
+			aa[i] = bb[t];
+			t=t+1;
+		}
+		aa[m]=x;
+		m=m+1;
+	}
+	puts(aa);
+}
 int main()
 {
-    int aa[100],bb[100],i,n,b,p;
-    printf("Input elements\n");
-    scanf("%d",&n);
-    for(i=0; i<n; i++)
-    {
-        scanf("%d",&aa[i]);
-    }
-    printf("Input position & value\n");
-    scanf("%d %d",&p,&b);
-    for(i=n-1; i>=p; i--)
-        {
-        aa[i+1]=aa[i];
-        }
-    aa[p]=b;
-    for(i=0; i<=n; i++)
-    {
-        printf("%d ",aa[i]);
-    }
+	char aa[1000],bb[1000];
+	int p;
+	printf("Input a string\n");
+	gets(aa);
+	printf("Insert a substring\n");
+	gets(bb);
+	printf("Input a position\n");
+	scanf("%d",&p);
+	insert(aa,bb,p);
+	return 0;
 }
